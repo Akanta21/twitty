@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'page_control#public'
+
   get '/', to:'page_control#public', as: 'home'
 
   get 'sessions/new'
