@@ -4,7 +4,7 @@ class PageControlController < ApplicationController
   # layout 'public'
 
   def private
-    # redirect_to post_path[current_user]
+
   end
 
   def public
