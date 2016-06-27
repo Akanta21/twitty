@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  root 'users#new'
 
-  get 'login', to:'sessions#new'
+  get '/', to:'home#public', as:'home'
 
-  delete 'logout', to: 'sessions#destroy'
+  get 'sign_in', to: 'sessions#new'
 
-  resources :posts
-  # resources :users
+  delete 'sign_out', to: 'sessions#destroy'
+  
+  get 'signup', to: 'users#new'
 
-  resources :users do
+  resources :users, only: [:create, :delete] do
     resources :posts
   end
   resources :sessions, only: [:create]

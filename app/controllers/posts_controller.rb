@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-  before_action :edit_del_post, only: [:update, :destroy]
+  before_action :edit_del_post, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -27,11 +27,12 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.html { redirect_to [current_user, @post], notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: user_posts_path(current_user) }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -58,7 +59,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to user_posts, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,7 +76,7 @@ class PostsController < ApplicationController
     end
 
     def edit_del_post
-      if :user_id != current_user.id
+      if @post.user_id != current_user.id
         flash[:error] = "You're not allowed to edit post!"
         redirect_to posts_url
       end

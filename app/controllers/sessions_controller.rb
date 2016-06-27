@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       # user.try(:authenticate, params[:pasword])
       # cookies[:user_email] = user.email
       session[:user_id] = user.id
-      redirect_to current_user, notice: "Signed In"
+      redirect_to home_path, notice: "Signed In"
     else
       flash.now.alert = "Couldn't sign you in. Please check your email and password."
       render "new"

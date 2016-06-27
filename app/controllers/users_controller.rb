@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, except: [:new]
+  # before_action :authenticate_user, except: [:new]
   before_action :edit_user, only: [:edit, :update]
   before_action :del_user, only: [:destroy]
 
@@ -40,8 +40,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to login_path, notice: 'User was succesfully created' }
-        format.json { render :show, status: :created, location: login_path }
+        format.html { redirect_to sign_in_path, notice: 'Welcome' }
+        format.json { render :show, status: :created, location: sign_in_path }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -85,14 +85,14 @@ class UsersController < ApplicationController
     end
 
     def edit_user
-      if @user.email != current_user.email
+      if current_user.email != @user.email
         flash[:error] = "You're not allowed to edit other users account!"
         redirect_to users_url
       end
     end
 
     def del_user
-      if @user.email != "a.kanta22@gmail.com"
+      if current_user.email != "a.kanta22@gmail.com"
         flash[:error] = "You're not allowed to delete user! Please contact admin!"
         redirect_to home_url
       end

@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.shared_examples "a signed in user" do
-  it "shows the user's name" do
-    expect(page).to have_content(user.name)
+  it "shows the user's email address" do
+    expect(page).to have_content(user.email)
   end
 
   it "shows a sign out link" do
-    expect(page).to have_link('Logout', href: logout_path)
+    expect(page).to have_link('Sign Out', href: sign_out_path)
   end
 
   it "shows a link to create a new post" do

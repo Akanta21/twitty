@@ -9,12 +9,26 @@
   </head>
 
   <body>
-    <% if user_logged_in? %>
-      <h3>Hello, <%= current_user.name %></h3>
-      <button type="button" class="btn btn-info"><%= link_to "Logout", logout_path, method: :delete %></button>
-    <% else %>
-      <button type="button" class="btn btn-info"><%= link_to "Login", login_path %></button>
-    <% end %>
+    <header class="navbar navbar-default">
+      <% if user_logged_in? %>
+      <div class="container">
+        <h3>Welcome, <%= current_user.email %></h3>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'New Post', new_user_post_path(current_user) %></li>
+            <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+            <% else %>
+            <% if !(current_page?(sign_in_path)) %>
+            <%= link_to "Sign In", sign_in_path %>
+            <% end %>
+            <% if !(current_page?(signup_path)) %>
+            <%= link_to "Sign Up", signup_path %>
+            <% end %>
+           <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <% flash.each do |name, message| %>
       <div class = "flash-message flash-message-<%= name %>">
         <%= message %>

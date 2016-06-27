@@ -7,21 +7,21 @@ RSpec.describe 'Signing in' do
   context 'when a user is signed in' do
     before do
       ensure_on home_path
-      click_on 'Login'
+      click_on 'Sign In'
 
       fill_in 'Email', with: 'harry@hogwarts.edu'
       fill_in 'Password', with: 'super_secret'
-      click_on 'Login'
+      click_on 'Sign In'
     end
 
     include_examples 'a signed in user'
 
     it 'shows them the home page' do
-      expect(page.current_path).to eq(current_user)
+      expect(page.current_path).to eq(home_path)
     end
 
     it 'lets the user sign out' do
-      click_on 'Logout'
+      click_on 'Sign Out'
 
       expect(page).to have_content('Signed out')
       expect(page).to_not have_content('harry@hogwarts.edu')
@@ -32,11 +32,11 @@ RSpec.describe 'Signing in' do
   context 'when the wrong email and password are provided' do
     before do
       ensure_on home_path
-      click_on 'Login'
+      click_on 'Sign In'
 
       fill_in 'Email', with: 'nonexistant@example.com'
       fill_in 'Password', with: 'doesnt_matter'
-      click_on 'Login'
+      click_on 'Sign In'
     end
 
     it "shows a failure message" do
