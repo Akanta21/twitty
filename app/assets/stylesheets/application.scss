@@ -14,5 +14,34 @@
  *= require_self
  */
  // Custom bootstrap variables must be set or imported before bootstrap itself.
+  $font-family-sans-serif:'Arima Madurai', cursive;
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ $brand-primary: darken(#428bca, 5%);
+
+
+
+ .navbar-default{
+   background-color:#f7e3a8;
+ }
+
+
+
+body{
+font-family: 'Arima Madurai', cursive;
+}
+a,#welcome_text{
+  font-family: 'Arima Madurai', cursive;
+  color:black;
+}
+#welcome_text{
+  line-height:50px;
+  font-size:20px;
+}
+h1{
+  font-family: 'Bungee Shade', cursive;
+}
+p{
+  font-size:20px;
+}

@@ -22,7 +22,7 @@ end
 
 def authenticate_user
   unless user_logged_in?
-    flash[:error] = "Please login first"
+    flash[:error] = "You must log in to access this page."
     redirect_to home_url
   end
 end

@@ -15,7 +15,7 @@ RSpec.describe 'Blogging' do
       fill_in 'Body', with: 'The Post Body'
       click_on 'Create Post'
 
-      expect(page).to have_content('successfully created')
+      expect(page).to have_content('Post was successfully created')
       expect(page).to have_content('The Title')
       expect(page).to have_content('The Post Body')
       expect(page.current_path).to eq user_post_path(user, Post.last)
@@ -56,7 +56,7 @@ RSpec.describe 'Blogging' do
       fill_in 'Body', with: 'Updated Body'
       click_on 'Update Post'
 
-      expect(page).to have_content 'successfully updated'
+      expect(page).to have_content 'Post was successfully updated'
       expect(page).to have_content 'Updated Title'
       expect(page).to have_content 'Updated Body'
       expect(page.current_path).to eq user_post_path(user, post)

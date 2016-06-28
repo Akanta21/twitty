@@ -1,8 +1,7 @@
-<%= form_for[current_user, post] do |f| %>
+<%= form_for([current_user, post]) do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,11 +9,11 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <div class="form-horizontal">
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
 
   <div class="field">
     <%= f.label :body %>
@@ -23,11 +22,11 @@
 
   <div class="field">
   <%= f.label :user_id %>
-  <!-- <%= f.collection_select :user_id, User.all, :id, :name %> -->
   <%= f.text_field :user_id, :value => current_user.id %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>
