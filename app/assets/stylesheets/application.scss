@@ -14,34 +14,104 @@
  *= require_self
  */
  // Custom bootstrap variables must be set or imported before bootstrap itself.
-  $font-family-sans-serif:'Arima Madurai', cursive;
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- $brand-primary: darken(#428bca, 5%);
+ $carousel-control-width: 2%;
+ $navbar-border-radius: 0px;
+ $navbar-margin-bottom: 0px;
 
+ /* Carousel Styling */
+.slide {
+  height: 460px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.one {
+  background-image: url(image-path('intro-bg.jpg'));
+}
+.two {
+  background-image: url(image-path('intro-bg2.jpeg'));
+}
+.three {
+  background-image: url(image-path('intro-bg3.jpeg'));
+}
+.four {
+  background-image: url(image-path('intro-bg4.jpeg'));
+}
+.carousel {
+  height: 100%;
+  max-height: 100%;
+  width:98%;
+  margin:0 auto;
+  overflow: hidden;
+}
+.carousel-caption h6 {
+  font-size: 3em;
+  font-style: italic;
+  padding-bottom: .4em;
+}
+.carousel-caption p {
+  font-size: 2em;
+}
 
+/* Navbar Styling */
 
  .navbar-default{
-   background-color:#f7e3a8;
+   background: rgba(252,241,121,1);
+   border:10px solid #11496C;
  }
 
 
-
-body{
-font-family: 'Arima Madurai', cursive;
+#headtag{
+  font-family: 'Rubik One', sans-serif;
+  font-size:25px;
+  color:black;
+  line-height: 52px;
 }
-a,#welcome_text{
+body{
+font-family:"Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size:20px;
+background-color:#11496C;
+}
+a,#welcome_text,td,th{
   font-family: 'Arima Madurai', cursive;
   color:black;
+  font-weight:bold;
+  padding:0 10px;
 }
 #welcome_text{
   line-height:50px;
   font-size:20px;
 }
-h1{
-  font-family: 'Bungee Shade', cursive;
+.jumbotron{
+  text-align:center;
+  font-size:15px;
+}
+#error_explanation, .field_with_errors{
+  margin-left: 162px;
+}
+h1, .actions{
+  padding-left:220px;
+}
+.actions{
+  font-family: 'Rubik One', sans-serif;
 }
 p{
   font-size:20px;
+}
+.padded{
+  padding-top:10px;
+}
+img{
+  height:20px;
+  width:20px;
+}
+blockquote {
+  background: #f9f9f9;
+  border: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
 }

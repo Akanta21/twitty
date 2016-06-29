@@ -1,0 +1,13 @@
+<% @posts.each do |post| %>
+<blockquote class="col-md-8">
+  <p class="card-title card-header"><h2><strong>Title:</strong></h2><br /><%= post.title %></p>
+  <p class="card-text"><h2><strong>Content:</strong></h2><br/><%= post.body %></p>
+  <footer>by: <%= post.user.name%></footer>
+  <p>
+    <% if current_user == post.user %>
+      <%= link_to 'Edit', edit_user_post_path(current_user, post), class: "btn btn-primary"  %>
+      <%= link_to 'Destroy', user_post_path(current_user, post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"  %>
+    <% end %>
+  </p>
+</blockquote>
+<% end %>

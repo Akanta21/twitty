@@ -7,10 +7,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    if current_user.email != "a.kanta22@gmail.com"
+      redirect_to home_url, notice: 'Admin Only' 
+    else
     @users = User.where(name: params[:name]) unless params[:name].blank?
-    if @users.blank?
-      @users = User.all
-    # redirect_to new_customer_path, notice: "customer #{params[:name]} not found. Add them?"
+      if @users.blank?
+        @users = User.all
+        # redirect_to new_customer_path, notice: "customer #{params[:name]} not found. Add them?"
+      end
     end
   end
 

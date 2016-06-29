@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:all, :show]
   before_action :edit_del_post, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
+    @posts = Post.where(user_id: current_user).all.order(created_at: :desc)
+  end
+
+  def all
     @posts = Post.all.order(created_at: :desc)
   end
 
@@ -31,7 +35,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to [current_user, @post], notice: 'Post was successfully created' }
+        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created' }
       else
         format.html { render :new }
       end

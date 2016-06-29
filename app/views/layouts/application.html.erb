@@ -6,22 +6,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Bungee+Shade" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Rubik+One" rel="stylesheet">
   </head>
   <body>
     <header class="navbar navbar-default">
       <div class="container">
-        <nav>
-            <% if user_logged_in? %>
           <ul class="nav nav-pills navbar-nav navbar-left">
-            <li id="welcome_text">Welcome, <%= current_user.name %> !</li>
+            <li><%= link_to image_tag("logo.png"), home_path %> </a></li>
+            <% if user_logged_in?  %>
+              <li id="welcome_text">Welcome, <%= current_user.name %> !</li>
+            <% else %>
+              <li id="headtag">Twit-tee</li>
+            <% end %>
           </ul>
-          <ul class="nav nav-pills navbar-nav navbar-right">
+        <ul class="nav nav-pills navbar-nav navbar-right">
+        <% if user_logged_in? %>
             <li><%= link_to 'New Post', new_user_post_path(current_user) %></li>
-            <li><%= link_to 'Posts', user_posts_path(current_user) %></li>
-            <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
-            <li><%= link_to current_user.email %></li>
-          </ul>
+            <li><%= link_to 'Posts', home_path %></li>
+            <li><%= link_to 'My Posts', user_posts_path(current_user) %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+                <li><%= link_to "Help" %></li>
+              </ul>
+            </li>
             <% else %>
           <ul class="nav nav-pills navbar-nav navbar-right">
             <% if !(current_page?(sign_in_path)) %>
@@ -33,11 +42,10 @@
           </ul>
            <% end %>
           </ul>
-        </nav>
       </div>
     </header>
     <% flash.each do |name, message| %>
-      <div class = "flash-message flash-message-<%= name %>">
+      <div class = "jumbotron flash-message flash-message-<%= name %>">
         <%= message %>
       </div>
     <% end %>

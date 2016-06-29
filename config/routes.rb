@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get 'comment/index'
 
-  get '/', to:'posts#index', as:'home'
+  get 'comment/new'
+
+  get 'comment/create'
+
+  root 'home#public'
+
+  get 'public', to:'posts#all', as:'home'
 
   # get '/', to:'home#public', as:'home'
 
@@ -10,7 +17,8 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
 
-  resources :users, only: [:create, :delete, :show] do
+
+  resources :users do
     resources :posts
   end
   resources :sessions, only: [:create]
