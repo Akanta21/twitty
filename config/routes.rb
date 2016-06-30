@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'comment/index'
 
-  get 'comment/new'
-
-  get 'comment/create'
 
   root 'home#public'
 
@@ -16,7 +12,9 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
-
+  resources :posts do
+    resources :comments
+  end
 
   resources :users do
     resources :posts

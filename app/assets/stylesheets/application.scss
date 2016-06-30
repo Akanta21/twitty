@@ -20,10 +20,11 @@
  $carousel-control-width: 2%;
  $navbar-border-radius: 0px;
  $navbar-margin-bottom: 0px;
+ $navbar-default-color: black;
 
  /* Carousel Styling */
 .slide {
-  height: 460px;
+  height: 700px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -43,14 +44,14 @@
 .carousel {
   height: 100%;
   max-height: 100%;
-  width:98%;
+
   margin:0 auto;
   overflow: hidden;
 }
 .carousel-caption h6 {
-  font-size: 3em;
+  font-size: 2.5em;
   font-style: italic;
-  padding-bottom: .4em;
+  padding-bottom: 0.7em;
 }
 .carousel-caption p {
   font-size: 2em;
@@ -60,7 +61,10 @@
 
  .navbar-default{
    background: rgba(252,241,121,1);
-   border:10px solid #11496C;
+   border:10px solid #36465D;
+   color:black;
+   width: 80%;
+   margin:0 auto;
  }
 
 
@@ -73,7 +77,8 @@
 body{
 font-family:"Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size:20px;
-background-color:#11496C;
+background-color:#36465D;
+color:white;
 }
 a,#welcome_text,td,th{
   font-family: 'Arima Madurai', cursive;
@@ -89,29 +94,52 @@ a,#welcome_text,td,th{
   text-align:center;
   font-size:15px;
 }
-#error_explanation, .field_with_errors{
-  margin-left: 162px;
+#error_explanation{
+  margin-left: 180px;
+  border:5px solid rgba(252,241,121,1);
 }
 h1, .actions{
   padding-left:220px;
 }
-.actions{
-  font-family: 'Rubik One', sans-serif;
-}
+
 p{
   font-size:20px;
-}
-.padded{
-  padding-top:10px;
 }
 img{
   height:20px;
   width:20px;
 }
+.comment_content{
+  padding: 4px;
+}
 blockquote {
   background: #f9f9f9;
   border: 10px solid #ccc;
   margin: 1.5em 10px;
+  margin-left: 15%;
+  color:black;
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";
+}
+.blockquote-left {
+  background: #f9f9f9;
+  border: 10px solid #ccc;
+  margin: 1.5em 10px;
+  margin-left: 5%;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+.padded{
+  padding:5px 10px;
+}
+.actions{
+  color:black;
+  font-family: 'Rubik One', sans-serif;
+}
+.forms{
+  border: 3px solid #ccc;
+  padding: 0.5em 10px;
+}
+#comments{
+  margin-left:30px;
 }

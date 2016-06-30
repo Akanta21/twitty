@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    # cookies[:user_email] = nil
-    redirect_to home_path, notice: "Signed out"
+    flash.now.alert = "Signed Out"
+    redirect_to root_url, notice: "Signed out"
   end
 end
