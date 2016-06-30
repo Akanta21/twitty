@@ -10,44 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Rubik+One" rel="stylesheet">
   </head>
   <body>
-    <header class="navbar navbar-default" id="navbar-home">
-      <div class="padded">
-          <ul class="nav nav-pills navbar-nav navbar-left">
-            <li><%= link_to image_tag("logo.png"), home_path %> </a></li>
-            <% if user_logged_in?  %>
-              <li id="welcome_text">Welcome, <%= current_user.name %> !</li>
-            <% else %>
-              <li id="headtag">Twit-tee</li>
-            <% end %>
-          </ul>
-        <ul class="nav nav-pills navbar-nav navbar-right">
-          <li><%= link_to 'Posts', home_path %></li>
-        <% if user_logged_in? %>
-            <li><%= link_to 'New Post', new_user_post_path(current_user) %></li>
-            <li><%= link_to 'My Posts', user_posts_path(current_user) %></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
-                <li><%= link_to "Help" %></li>
-            </li>
-            <% else %>
-            <% if !(current_page?(sign_in_path)) %>
-            <li><%= link_to "Sign In", sign_in_path %></li>
-            <% end %>
-            <% if !(current_page?(signup_path)) %>
-            <li><%= link_to "Sign Up", signup_path %></li>
-            <% end %>
-          </ul>
-           <% end %>
-        </ul>
-      </div>
-    </header>
+    <%= render "layouts/nav" %>
     <% flash.each do |name, message| %>
-      <div class = "jumbotron flash-message-<%= name %>">
-        <%= message %>
-      </div>
-    <% end %>
+    <div class="bs-example">
+        <div class="alert alert-warning flash-message-<%= name %>">
+            <strong><%= message %></strong>
+        </div>
+    </div>
+      <% end %>
     <%= yield %>
   </body>
 </html>

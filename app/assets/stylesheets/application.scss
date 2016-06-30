@@ -17,14 +17,18 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- $carousel-control-width: 2%;
- $navbar-border-radius: 0px;
- $navbar-margin-bottom: 0px;
- $navbar-default-color: black;
+ $carousel-control-width: 12%;
 
  /* Carousel Styling */
+.carousel-control{
+  opacity: 0;
+  color: transparent;
+}
+a:visited {
+    color: transparent;
+}
 .slide {
-  height: 700px;
+  height: 600px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -86,6 +90,9 @@ a,#welcome_text,td,th{
   font-weight:bold;
   padding:0 10px;
 }
+.commentform{
+  font-family: 'Rubik One', sans-serif;
+}
 #welcome_text{
   line-height:50px;
   font-size:20px;
@@ -96,7 +103,7 @@ a,#welcome_text,td,th{
 }
 #error_explanation{
   margin-left: 180px;
-  border:5px solid rgba(252,241,121,1);
+  border:5px solid red;
 }
 h1, .actions{
   padding-left:220px;
@@ -115,11 +122,6 @@ img{
 blockquote {
   background: #f9f9f9;
   border: 10px solid #ccc;
-  margin: 1.5em 10px;
-  margin-left: 15%;
-  color:black;
-  padding: 0.5em 10px;
-  quotes: "\201C""\201D""\2018""\2019";
 }
 .blockquote-left {
   background: #f9f9f9;
@@ -132,14 +134,28 @@ blockquote {
 .padded{
   padding:5px 10px;
 }
-.actions{
+.actions,.comment, .postnew{
   color:black;
-  font-family: 'Rubik One', sans-serif;
 }
-.forms{
-  border: 3px solid #ccc;
-  padding: 0.5em 10px;
+.notice{
+  width:40%;
+  font-size:2em;
+  margin:0 auto;
+  color:black;
 }
-#comments{
-  margin-left:30px;
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 80%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+  clear:both;
 }

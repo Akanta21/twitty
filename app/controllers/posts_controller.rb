@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @user = User.find(params[:user_id]).name
   end
 
   # GET /posts/new

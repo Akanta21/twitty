@@ -1,28 +1,41 @@
-<blockquote class="col-xs-12 col-sm-8 col-md-8">
- <table class="table forum table-striped">
-   <thead>
-     <tr>
-       <th class="cell-stat"></th>
-       <th>
-         <h3><strong>Posts</strong></h3>
-       </th>
-       <th class="cell-stat text-center ">Posted By</th>
-       <th class="cell-stat text-center ">Last Post</th>
-       <th class="cell-stat-2x text-center ">Number of Comments</th>
-     </tr>
-   </thead>
-   <% @posts.each do |post| %>
-   <tbody>
-     <tr>
-       <td class="text-center"><i class="fa fa-heart fa-2x text-primary"></i></td>
-       <td class="text-left">
-         <h6><%= link_to  post.title, user_post_path(post.user_id, post), class: "btn btn-default" %></h6>
-       </td>
-       <td class="text-center "><%= post.user.name %></td>
-       <td class="text-center "><%= time_ago_in_words(post.created_at) %></td>
-       <td class="text-center "><%= post.comments.count %></td>
-     </tr>
-   </tbody>
+<div class="post-table">
+  <div class="col-md-2"></div>
+  <blockquote class="col-md-8">
+   <table class="table forum table-striped">
+     <thead>
+       <tr>
+         <th class="cell-stat"></th>
+         <th><strong>Posts</strong></th>
+         <th class="cell-stat text-center ">Posted By</th>
+         <th class="cell-stat text-center ">Last Post</th>
+         <th class="cell-stat text-center ">Number of Comments</th>
+       </tr>
+     </thead>
+     <% @posts.each do |post| %>
+     <tbody>
+       <tr>
+         <td class="text-center"><i class="fa fa-heart fa-2x text-primary"></i></td>
+         <td class="text-left">
+           <%= link_to  post.title, user_post_path(post.user_id, post), class: "btn btn-default" %>
+         </td>
+         <td class="text-center "><%= post.user.name %></td>
+         <td class="text-center "><%= time_ago_in_words(post.created_at) %></td>
+         <td class="text-center "><%= post.comments.count %></td>
+       </tr>
+     </tbody>
+     <% end %>
+   </table>
+   <% if user_logged_in? %>
+   <div class = "showback">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-6">
+       <%= link_to 'Home', root_path%> |
+       <%= link_to 'Other Posts', user_posts_path(current_user) %>
+     </div>
+     <div class="col-sm-2"></div>
+   </div>
+   <br/>
+  <br/>
    <% end %>
- </table>
-</blockquote>
+  </blockquote>
+</div>

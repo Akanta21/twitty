@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'home#public'
 
   get 'public', to:'posts#all', as:'home'
@@ -12,7 +11,8 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
-  resources :posts do
+
+  resources :posts, only: [:all] do
     resources :comments
   end
 

@@ -1,4 +1,8 @@
-<%= render 'form', post: @post %>
-
-<%= link_to 'Show', user_posts_path(current_user)%> |
-<%= link_to 'Back', user_posts_path(current_user) %>
+<div id="wrap">
+  <div id="main" class="container clear-top">
+    <%= render 'form', post: @post %>
+    <%= link_to 'Show', user_posts_path(current_user)%> |
+    <%= link_to 'Back', user_posts_path(current_user) %>
+  </div>
+</div>
+<footer class="footer text-center"><p>Copyright &copy; Ak</p></footer>

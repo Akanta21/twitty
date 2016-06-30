@@ -1,11 +1,16 @@
 <%= form_for [@post, @post.comments.build] do |f| %>
-
-  <p>
+<div class="commentform">
+  <div class="col-sm-12">
+    <h3>Add a Comment</h3>
+  </div>
+  <p class="col-sm-12">
     <%= f.text_area :content,rows: '8'%>
   </p>
 
-  <p>
+  <p class="col-sm-12">
     <%= f.submit "Submit" %>
   </p>
 
 <% end %>
+
+</div>
