@@ -1,16 +1,40 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div id="wrap">
+  <div id="main" class="container clear-top">
+    <div class="col-sm-12">
+      <div class="col-sm-2"></div>
+      <h2 class="col-sm-6">User Page</h2>
+    </div>
+  <div class="form">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2"><strong>Name:</strong></div>
+    <div class="col-sm-8">
+      <%= @user.name %>
+    </div>
+  </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <div class="form">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2"><strong>Email:</strong></div>
+    <div class="col-sm-8">
+      <%= @user.email %>
+    </div>
+  </div>
 
-<button type="button" class="btn btn-info"><%= link_to 'Edit', edit_user_path(@user) %></button>
-<button type="button" class="btn btn-info"><%= link_to 'Back', home_path %></button>
-<!-- remove the password_digest -->
-<div class="container padded text-center">
-    <p>Copyright &copy; Ak</p>
+  <div class="col-sm-12">
+    <br />
+  </div>
+
+  <div class="form">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <% if user_logged_in? %>
+      <button type="button" class="btn btn-info"><%= link_to 'Edit', edit_user_path(@user) %></button>
+      <% else %>
+      <button type="button" class="btn btn-info"><%= link_to 'Back', home_path %></button>
+      <% end %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
 </div>
+</div>
+<footer class="footer text-center"><p>Copyright &copy; Ak</p></footer>
